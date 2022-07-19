@@ -14,5 +14,5 @@ const transaction = Joi.object().keys({
 });
 
 module.exports = {
-    transaction,
+    transaction
 }

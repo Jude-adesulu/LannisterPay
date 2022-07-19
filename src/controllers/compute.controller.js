@@ -39,7 +39,8 @@ module.exports = {
 
                 //Compute FLAT
                 if (data.SplitType === 'FLAT') {
-                    current_bal -= Number(data.SplitValue)
+                    current_bal -= Number(data.SplitValue);
+                    openRatioBal = current_bal;
                 }
 
                 //Compute PERCENTAGE
