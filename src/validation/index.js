@@ -6,7 +6,7 @@ const transaction = Joi.object().keys({
     Currency: Joi.string().uppercase().required(),
     CustomerEmail: Joi.string().email().trim().required(),
     SplitInfo: Joi.array().items({
-        SplitType: Joi.string().required(),
+        SplitType: Joi.string().valid('FLAT', 'PERCENTAGE', 'RATIO').required(),
         SplitValue: Joi.number().required(),
         SplitEntityId: Joi.string().required()
     }).min(1).max(20),

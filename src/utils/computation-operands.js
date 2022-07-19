@@ -14,15 +14,6 @@
      return [...flatType, ...percentageType, ...ratioType]
     }
 
-    // const validateS = (data) =>{
-    //    data.filter(value =>{
-    //     if(!value.SplitType || !value.SplitType ==='FLAT' || 
-    //     !value.SplitType ==='PERCENTAGE' || !value.SplitType ==='RATIO'){
-    //         return sendError(res, 'SplitType can be of type FLAT, PERCENTAGE, RATIO');
-    //     }
-    //    })
-    // }
-
     const totalRatio = (entities) =>{
         let totalRatio = 0
         for (const entity of entities) {
@@ -44,5 +35,4 @@
         orderOfPrecedence,
         totalRatio,
         totalValue,
-        // validateS
     }

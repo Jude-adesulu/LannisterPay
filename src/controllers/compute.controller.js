@@ -9,8 +9,6 @@ module.exports = {
             await transaction.validateAsync(req.body);
     
             const { ID, Amount, SplitInfo } = req.body;
-            
-            // validateS(SplitInfo)
 
             let current_bal = Number(Amount);
             let totalSplitValue = totalValue(SplitInfo);
