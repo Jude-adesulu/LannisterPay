@@ -9,7 +9,7 @@ const sendSuccess = (res, data = {}, statusCode) => {
 const sendError = (res, message, statusCode) => {
     const response = {
         success: false,
-        message,
+        message: message,
         errorCode: statusCode
     };
     return res.status(statusCode).json(response);
