@@ -19,54 +19,58 @@ The API service expose a single HTTP POST endpoint /split-payments/compute that 
 
 Sample Payload :
 
-> {
-> "ID": 1308,
-> "Amount": 12580,
-> "Currency": "NGN",
-> "CustomerEmail": "anon8@customers.io",
-> "SplitInfo": [
->
-> > {
-> > "SplitType": "FLAT",
-> > "SplitValue": 45,
-> > "SplitEntityId": "LNPYACC0019"
-> > },
-> > {
-> > "SplitType": "RATIO",
-> > "SplitValue": 3,
-> > "SplitEntityId": "LNPYACC0011"
-> > },
-> > {
-> > "SplitType": "PERCENTAGE",
-> > "SplitValue": 3,
-> > "SplitEntityId": "LNPYACC0015"
-> > }
-> > ]
-> > }
+<pre><code>
+{
+    "ID": 1308,
+    "Amount": 12580,
+    "Currency": "NGN",
+    "CustomerEmail": "anon8@customers.io",
+    "SplitInfo": [
+
+        {
+            "SplitType": "FLAT",
+            "SplitValue": 45,
+            "SplitEntityId": "LNPYACC0019"
+        },
+        {
+            "SplitType": "RATIO",
+            "SplitValue": 3,
+            "SplitEntityId": "LNPYACC0011"
+        },
+        {
+            "SplitType": "PERCENTAGE",
+            "SplitValue": 3,
+            "SplitEntityId": "LNPYACC0015"
+        }
+    ]
+}
+</code></pre>
 
 Sample output:
 
-> {
-> "data": {
-> "ID": 1308,
-> "Balance": 0,
-> "SplitBreakdown": [
->
-> > {
-> > "SplitEntityId": "LNPYACC0019",>
-> > "Amount": 45
-> > },
-> > {
-> > "SplitEntityId": "LNPYACC0015",
-> > "Amount": 3
-> > },>
-> > {
-> > "SplitEntityId": "LNPYACC0011",
-> > "Amount": 3
-> > }
-> > ]
-> > }
-> > }
+<pre><code>
+ {
+    "data": {
+    "ID": 1308,
+    "Balance": 0,
+    "SplitBreakdown": [
+
+        {
+            "SplitEntityId": "LNPYACC0019",>
+            "Amount": 45
+        },
+        {
+            "SplitEntityId": "LNPYACC0015",
+            "Amount": 3
+        },
+        {
+            "SplitEntityId": "LNPYACC0011",
+            "Amount": 3
+        }
+    ]
+   }
+ }
+</code></pre>
 
 **= Rule 1 =**
 Each split calculation is based on the Balance after the previous calculation's done. At the start of the split calculation, `Balance` should be same as the transaction `Amount`. It then subsequently decreases by the value of the split amount computed for each item in the `SplitInfo` array.
